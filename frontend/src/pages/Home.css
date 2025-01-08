@@ -1,0 +1,25 @@
+.banner {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .banner h1 {
+    font-size: 48px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .banner h2 {
+    font-size: 32px;
+    color: #000000;
+    margin-top: 10px;
+  }
+  
+  .products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
