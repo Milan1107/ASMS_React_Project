@@ -1,42 +1,137 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffcc00;
-    padding: 10px 20px;
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 24px;
-  }
-  
-  .location {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-  }
-  
-  .search-bar {
-    display: flex;
-  }
-  
-  .search-bar input {
-    padding: 5px;
-  }
-  
-  .search-bar button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffcc00;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.logo:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.location:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #666;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: darkgreen;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+}
+
+.icons i {
+  cursor: pointer;
+  color: #333;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.icons i:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.login-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.login-container:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.login-options {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+  min-width: 200px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-options button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.login-options button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.login-options button:first-child {
+  border-bottom: 1px solid #eee;
+}
