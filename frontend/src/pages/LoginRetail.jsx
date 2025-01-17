@@ -1,13 +1,25 @@
-import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
+import "./LoginPageRetail.css";
+import logginSvg from '/src/assets/loggin.svg';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleSignupClick = () => {
+    navigate("/signup-retail");
+  };
+
   return (
     <div className="login-container">
       <div className="left-section">
         <h1>New here?</h1>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-        <button className="signup-btn">SIGN UP</button>
-        <img src="https://via.placeholder.com/300x200" alt="Illustration" className="illustration" />
+        <button className="signup-btn" onClick={handleSignupClick}>SIGN UP</button>
+        <img
+          src={logginSvg}
+          alt="Webinar Animation"
+          style={{ width: "350px", height: "auto", marginTop: "20px" }}
+        />
       </div>
       <div className="right-section">
         <h2>Sign in</h2>
