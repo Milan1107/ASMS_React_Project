@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./LoginPageRetail.css";
 import logginSvg from '/src/assets/loggin.svg';
+import GoogleIcon from '@mui/icons-material/Google';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import {IconButton} from "@mui/material";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -12,8 +15,8 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="left-section">
-        <h1>New here?</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        <h3>Welcome to ASMS!</h3>
+        <h1>New here?</h1><br></br>
         <button className="signup-btn" onClick={handleSignupClick}>SIGN UP</button>
         <img
           src={logginSvg}
@@ -40,8 +43,12 @@ const LoginPage = () => {
         </form>
         <p>Sign in with social platforms</p>
         <div className="social-icons">
-          <button><i className="fab fa-google"></i></button>
-          <button><i className="fab fa-linkedin"></i></button>
+          <IconButton sx={{ color: "black" }}>
+            <GoogleIcon />
+          </IconButton>
+          <IconButton sx={{ color: "black" }}>
+            <FacebookIcon />
+          </IconButton>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
 import "./Home.css";
+import Slider from "../components/Slider/dashSlider";
 
 const Home = () => {
   const products = [
@@ -13,9 +14,16 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div className="banner">
-        <h1>SPECIAL SALE</h1>
-        <h2>BUY NOW!</h2>
+      <br />
+      <Slider/>
+      <div className="products">
+        {products.map((product) => (
+          <ProductCard 
+            key={product.id} 
+            image={product.image} 
+            name={product.name} 
+          />
+        ))}
       </div>
       <div className="products">
         {products.map((product) => (

@@ -1,0 +1,25 @@
+@import url("slick-carousel/slick/slick.css");
+@import url("slick-carousel/slick/slick-theme.css");
+
+/* Slider container */
+.slick-slider {
+  width: calc(100% - 50px); /* Full width minus 25px on each side */
+  margin: 0 auto; /* Center the slider */
+}
+
+/* Center slides */
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Images */
+.slick-slide img {
+  max-width: 80%; /* Image covers 75-80% width */
+  max-height: 300px; /* Set desired height */
+  object-fit: cover; /* Ensure image fits without distortion */
+  margin: auto; /* Center the image */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
