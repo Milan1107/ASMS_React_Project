@@ -1,13 +1,18 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const { signupValidation, loginValidation } = require('../Middleware/AuthValidation.js'); // Import validation middleware
+const {signup,login} = require("../Controlers/AuthControler.js");
 
 // Login route
-router.post('/login', (req, res) => {
-    res.status(200).send("Login Success");
+router.post('/login', loginValidation, (req, res) => {
+    // Placeholder for login logic
+    login(req,res);
 });
 
 // Signup route
-router.post('/signup', (req, res) => { // Fixed: Changed 'Signup' to 'signup' (case-sensitive)
-    res.status(201).send("Signup Success");
+router.post('/signup', signupValidation, (req, res) => {
+    // Placeholder for signup logic
+    signup(req,res)
 });
 
 module.exports = router;

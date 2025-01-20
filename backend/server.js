@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const AuthRouter = require('./Routes/AuthRouter'); // Import Auth Router
 require('dotenv').config();
-require('./retailer/Models/db'); // Ensure this file sets up MongoDB connection
+require('./Models/db'); // Ensure this file sets up MongoDB connection
 
 const PORT = process.env.PORT || 8080;
 
@@ -21,6 +21,6 @@ app.use(cors()); // Fixed: Invoke cors as a function
 app.use('/auth', AuthRouter); // Fixed: Add leading slash for the route
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(8080, () => {
     console.log(`Server is Running on http://localhost:${PORT}`);
 });
