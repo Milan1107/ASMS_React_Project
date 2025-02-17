@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
-const UserModel = require("../Models/User");
+const { User } = require('../models/user'); // Adjust the path based on your file structure
+
 const validator = require('validator');
 
 // Signup Controller
@@ -54,39 +55,23 @@ const signup = async (req, res) => {
     }
 };
 
-// Login Controller
+//Login contoller
+const jwt = require('jsonwebtoken');
+
 const login = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { email, password } = req.body;
 
-        // Ensure either username or email is provided, but not both
-        if ((!username && !email) || (username && email)) {
+        // Validate input
+        if (!email || !password) {
             return res.status(400).json({ 
-                message: "Please provide either a username or an email, but not both.", 
+                message: "Email and password are required.", 
                 success: false 
             });
         }
 
-        if (!password) {
-            return res.status(400).json({ 
-                message: "Password is required.", 
-                success: false 
-            });
-        }
-
-        // Validate email format if email is provided
-        if (email && !validator.isEmail(email)) {
-            return res.status(400).json({ 
-                message: "Invalid email format.", 
-                success: false 
-            });
-        }
-
-        // Find user by email or username
-        const user = await UserModel.findOne({
-            $or: [{ email }, { username }]
-        });
-
+        // Find user by email
+        const user = await User.findOne({ email }); // Adjust `User` import as needed
         if (!user) {
             return res.status(404).json({ 
                 message: "User not found. Please sign up first.", 
@@ -94,7 +79,7 @@ const login = async (req, res) => {
             });
         }
 
-        // Verify password
+        // Check password validity
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             return res.status(401).json({ 
@@ -103,10 +88,26 @@ const login = async (req, res) => {
             });
         }
 
-        // Successful login response
+        // Generate JWT
+        const token = jwt.sign(
+            { id: user._id, email: user.email }, // Payload
+            process.env.JWT_SECRET, // Secret key from .env
+            { expiresIn: process.env.JWT_EXPIRES_IN || '1h' } // Expiration time with fallback
+        );
+
+        // Set token in an HTTP-only cookie for added security
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Secure only in production
+            sameSite: 'strict',
+            maxAge: 3600000 // 1 hour in milliseconds
+        });
+
+        // Return success response
         return res.status(200).json({ 
             message: "Login successful!", 
             success: true, 
+            token, // Optional: Send the token in the response for client-side use
             user: {
                 name: user.name,
                 username: user.username,

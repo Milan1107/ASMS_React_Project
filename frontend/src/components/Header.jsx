@@ -53,10 +53,13 @@ const Header = () => {
 
   // Navigate to Orders Page
   const handleOrdersClick = () => {
-    navigate("/orders");
+    navigate("/");
   };
   const handleRetailLoginClick = () => {
     navigate("/login-retail");
+  };
+  const handleAgencyLoginClick = () => {
+    navigate("/agency/dashboard");
   };
 
   return (
@@ -153,7 +156,7 @@ const Header = () => {
             }}
           >
             <MenuItem onClick={handleRetailLoginClick}>Login for Retail</MenuItem>
-            <MenuItem onClick={handleLoginClose}>Login for Agency</MenuItem>
+            <MenuItem onClick={handleAgencyLoginClick}>Login for Agency</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

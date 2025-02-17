@@ -58,12 +58,14 @@ const signupValidation = (req, res, next) => {
     next();
 };
 
+
+//loginValidation 
+
 const loginValidation = (req, res, next) => {
     const schema = Joi.object({
-        username: userValidationSchema.username.optional(),
-        email: userValidationSchema.email.optional(),
-        password: userValidationSchema.password,
-    }).xor('username', 'email'); // Require either email or username
+        email: userValidationSchema.email(), // Ensure this is defined as a Joi schema
+        password: userValidationSchema.password(), // Ensure this is called as a Joi schema function
+    });
 
     const { error } = schema.validate(req.body, { abortEarly: false });
     if (error) {
@@ -71,7 +73,7 @@ const loginValidation = (req, res, next) => {
             status: 400,
             message: 'Validation error',
             errors: error.details.map(err => ({
-                field: err.context.label,
+                field: err.path.join('.'), // Use `err.path` to identify the field
                 message: err.message,
             })),
         });

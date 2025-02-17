@@ -5,13 +5,13 @@ const cors = require('cors');
 const AuthRouter = require('./Routes/AuthRouter'); // Import Auth Router
 require('dotenv').config();
 require('./Models/db'); // Ensure this file sets up MongoDB connection
+const cookieParser = require('cookie-parser');
+
 
 const PORT = process.env.PORT || 8080;
 
-// Ping endpoint for testing
-app.get('/ping', (req, res) => {
-    res.send("Hello Milan");
-});
+app.use(express.json());
+app.use(cookieParser());
 
 // Middleware setup
 app.use(bodyParser.json());

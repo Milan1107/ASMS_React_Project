@@ -1,3 +1,8 @@
+/* body,html{
+  height: 100%;
+  margin: 0;
+}
+
 .banner {
     background-color: #ffffff;
     text-align: center;
@@ -21,5 +26,16 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
+  }
+   */
+
+   /*  */
+  
+  .products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap into new rows */
+    padding: 20px;
+    gap: 15px; /* Add some spacing between products */
   }
   

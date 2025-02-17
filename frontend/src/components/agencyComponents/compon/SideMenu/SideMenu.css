@@ -1,0 +1,21 @@
+.custom-icon {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .custom-icon .anticon {
+    color: #1890ff; /* Primary color */
+  }
+  
+  .custom-icon .anticon::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 215, 0, 0.3); /* Secondary color (overlay effect) */
+    z-index: -1;
+    border-radius: 50%; /* Optional for rounded backgrounds */
+  }
+  

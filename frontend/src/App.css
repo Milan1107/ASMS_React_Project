@@ -3,7 +3,13 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+ }
+/*html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto; 
+  margin: 0;
+} */
 
 .logo {
   height: 6em;
