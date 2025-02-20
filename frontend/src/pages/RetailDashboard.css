@@ -1,0 +1,64 @@
+/* retailDashboard.css */
+
+/* General body styling */
+body {
+    background-color: #f4f7fa;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Navbar customization */
+  .navbar-custom {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .navbar-brand:hover {
+    color: #111827;
+  }
+  
+  /* Avatar and dropdown */
+  .avatar-custom img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .dropdown-menu-custom {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+  }
+  
+  .dropdown-item-custom {
+    padding: 0.75rem 1rem;
+    color: #1f2937;
+  }
+  
+  .dropdown-item-custom:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+  }
+  
+  /* Main content styling */
+  main {
+    padding: 2rem;
+  }
+  
+  main h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  main p {
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }

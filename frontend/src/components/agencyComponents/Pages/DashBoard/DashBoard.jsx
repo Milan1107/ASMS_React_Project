@@ -3,12 +3,18 @@ import {
   DollarCircleOutlined,
   UserOutlined,
   DatabaseOutlined,
-} from "@ant-design/icons"; // Ant Design Icons
+} from "@ant-design/icons";
 
-import { Card, Space, Statistic, Typography, Table } from "antd"; // Ant Design Components
-import { Bar } from "@ant-design/plots"; // Ant Design Charts (for Bar Chart)
+import { Card, Space, Statistic, Typography, Table } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function DashBoard() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <Typography.Title level={4}>DashBoard</Typography.Title>
@@ -21,7 +27,8 @@ function DashBoard() {
             fontSize:20,
             padding:8
           }}
-        />} />
+        />} onClick={() => navigate('/agency/orders')} />
+        
         <DashBoardCard title={"Revenue"} value={"₹11,20,000"} icon={<DollarCircleOutlined 
           style={{
             color:"red",
@@ -30,7 +37,8 @@ function DashBoard() {
             fontSize:20,
             padding:8
           }}
-        />} />
+        />} onClick={() => navigate('/agency/revenue')} />
+        
         <DashBoardCard title={"Customers"} value={120} icon={<UserOutlined
           style={{
             color:"blue",
@@ -39,7 +47,8 @@ function DashBoard() {
             fontSize:20,
             padding:8
           }}
-        />} />
+        />} onClick={() => navigate('/agency/customers')} />
+        
         <DashBoardCard title={"Products"} value={340} icon={<DatabaseOutlined 
           style={{
             color:"orange",
@@ -48,24 +57,22 @@ function DashBoard() {
             fontSize:20,
             padding:8
           }}
-        />} />
+        />} onClick={() => navigate('/agency/inventory')} />
       </Space>
 
-      {/* Bar Chart Section */}
       <div style={{ width: "50%", marginTop: "20px" }}> 
         <BarChart />
       </div>
       
-      {/* Order History Table */}
       <Typography.Title level={5} style={{ marginTop: "20px" }}>Order History</Typography.Title>
       <OrderHistoryTable />
     </div>
   );
 }
 
-function DashBoardCard({ title, value, icon }) {
+function DashBoardCard({ title, value, icon, onClick }) {
   return (
-    <Card style={{ width: 200 }}>
+    <Card style={{ width: 200, cursor: 'pointer' }} onClick={onClick} hoverable>
       <Space>
         {icon}
         <Statistic title={title} value={value} />
@@ -74,29 +81,35 @@ function DashBoardCard({ title, value, icon }) {
   );
 }
 
-// ✅ Bar Chart Component (Vertical & Smaller Width)
 function BarChart() {
-  const data = [
-    { category: "Electronics", sales: 4000 },
-    { category: "Clothing", sales: 3000 },
-    { category: "Grocery", sales: 2500 },
-    { category: "Books", sales: 2000 },
-  ];
-
-  const config = {
-    data,
-    xField: "sales",
-    yField: "category",
-    seriesField: "category",
-    legend: false,
-    barWidthRatio: 0.3, // Reducing bar width
-    height: 250, // Smaller chart height
+  const data = {
+    labels: ["Electronics", "Clothing", "Grocery", "Books"],
+    datasets: [
+      {
+        label: "Sales",
+        data: [4000, 3000, 2500, 2000],
+        backgroundColor: ["rgba(75, 192, 192, 0.2)"],
+        borderColor: ["rgba(75, 192, 192, 1)"],
+        borderWidth: 1,
+      },
+    ],
   };
 
-  return <Bar {...config} />;
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: "Sales by Category" },
+    },
+    scales: {
+      x: { beginAtZero: true },
+      y: { beginAtZero: true },
+    },
+  };
+
+  return <Bar data={data} options={options} />;
 }
 
-// ✅ Order History Table Component
 function OrderHistoryTable() {
   const columns = [
     { title: "Order ID", dataIndex: "orderId", key: "orderId" },
@@ -115,7 +128,3 @@ function OrderHistoryTable() {
 }
 
 export default DashBoard;
-
-
-
-// {"₹1,20,000"}
