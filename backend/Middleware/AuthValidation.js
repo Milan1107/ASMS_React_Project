@@ -111,8 +111,7 @@ const signupValidation = (req, res, next) => {
 const loginValidation = (req, res, next) => {
     const schema = Joi.object({
         username: userValidationSchema.username.optional(),
-        email: userValidationSchema.email.optional(),
-        password: userValidationSchema.password,
+        password: userValidationSchema.password
     }).xor('username', 'email');
 
     const { error } = schema.validate(req.body, { abortEarly: false });

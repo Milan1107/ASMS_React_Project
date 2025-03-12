@@ -10,10 +10,12 @@ import DashBoard from "./components/agencyComponents/Pages/DashBoard/DashBoard";
 import Inventory from "./components/agencyComponents/Pages/Inventory/Inventory";
 import Customers from "./components/agencyComponents/Pages/Customer/Customer";
 import Orders from "./components/agencyComponents/Pages/Order/Order";
+import Cart from "./components/cart";
 
 
 
 import axios from 'axios';
+import Paypal from "./components/paypal";
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
@@ -25,8 +27,10 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login-retail" element={<LoginRetail />} />
         <Route path="/signup-retail" element={<SignupRetail />} />
+        <Route path="/cart" element={<Cart/>}/>
         <Route path="/dashboard" element={<PrivateRoute><RetailDashboard/></PrivateRoute>} />
         <Route path="/agency" element={<Agency />} />
+        <Route path="/payment-gateway" element={<Paypal/>}/>
         
         {/* Wrap agency pages inside SideBar */}
         <Route path="/agency/*" element={<SideBar />}>

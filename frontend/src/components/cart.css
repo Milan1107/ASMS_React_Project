@@ -1,0 +1,13 @@
+.cart-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .cart-container h1 {
+    color: #333;
+  }
+  
+  .cart-container p {
+    color: #666;
+  }
+  

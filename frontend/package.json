@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.0",
     "@mui/material": "^6.4.0",
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "antd": "^5.24.0",
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",
