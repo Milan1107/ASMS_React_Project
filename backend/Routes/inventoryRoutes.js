@@ -26,27 +26,12 @@ module.exports = router;
 
 
 // const express = require("express");
-// const multer = require("multer");
-// const {
-//   getInventory,
-//   addInventory,
-//   updateQuantity,
-//   deleteInventory,
-// } = require("../Controlers/inventoryController");
+// const { getInventory, addInventory, updateQuantity, deleteInventory } = require("../Controllers/inventoryController");
 
 // const router = express.Router();
 
-// // Multer configuration for storing images in the 'uploads' folder
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => cb(null, "uploads/"),
-//   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
-// });
-
-// const upload = multer({ storage });
-
-// // Routes
-// router.get("/", getInventory);
-// router.post("/", upload.single("image"), addInventory);
+// router.get("/", getInventory); // Fetch inventory with images
+// router.post("/", addInventory);
 // router.put("/update-qty", updateQuantity);
 // router.delete("/:productId", deleteInventory);
 

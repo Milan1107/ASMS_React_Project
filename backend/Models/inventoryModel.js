@@ -1,8 +1,9 @@
 // const mongoose = require("mongoose");
+// const Image = require("./inventory_img");
 
 // const inventorySchema = new mongoose.Schema({
 //   productId: { type: String, required: true, unique: true },
-//   name: { type: String, required: true },
+//   name: { type: String, required: true }, // Product name, used to reference the Image schema
 //   category: { type: String, required: true },
 //   weight: { type: String, required: true },
 //   qty: { type: Number, required: true },
@@ -12,33 +13,17 @@
 //   expiryDate: { type: String, required: true },
 // });
 
-// module.exports = mongoose.model("inventories", inventorySchema);
+// const Inventory = mongoose.model("inventories", inventorySchema);
 
+// module.exports = { Image, Inventory };
 
-// const mongoose = require("mongoose");
-
-// const inventorySchema = new mongoose.Schema({
-//   productId: { type: String, required: true, unique: true },
-//   name: { type: String, required: true },
-//   category: { type: String, required: true },
-//   weight: { type: String, required: true },
-//   qty: { type: Number, required: true },
-//   status: { type: String, default: "Available" },
-//   description: { type: String },
-//   price: { type: String, required: true },
-//   expiryDate: { type: String, required: true },
-//    // Reference to Image schema
-// });
-
-// module.exports = mongoose.model("Inventory", inventorySchema);
 
 
 const mongoose = require("mongoose");
-const Image = require("./inventory_img");
 
 const inventorySchema = new mongoose.Schema({
   productId: { type: String, required: true, unique: true },
-  name: { type: String, required: true }, // Product name, used to reference the Image schema
+  name: { type: String, required: true }, // Used to reference the Image schema
   category: { type: String, required: true },
   weight: { type: String, required: true },
   qty: { type: Number, required: true },
@@ -49,6 +34,4 @@ const inventorySchema = new mongoose.Schema({
 });
 
 const Inventory = mongoose.model("inventories", inventorySchema);
-
-module.exports = { Image, Inventory };
-
+module.exports = Inventory;
