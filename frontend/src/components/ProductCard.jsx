@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Card, Button } from "react-bootstrap";
+import { FaShoppingCart } from "react-icons/fa";
 import "./ProductCard.css";
 
 const ProductCard = ({ productId, name, category, qty, status, price }) => {
@@ -9,7 +12,6 @@ const ProductCard = ({ productId, name, category, qty, status, price }) => {
       try {
         const response = await fetch(`http://localhost:8080/upload/get-image/${name}`);
         const data = await response.json();
-
         if (data.imageUrl) {
           setImageUrl(data.imageUrl);
         }
@@ -22,24 +24,28 @@ const ProductCard = ({ productId, name, category, qty, status, price }) => {
   }, [name]);
 
   return (
-    <div className="product-card">
-      {imageUrl ? (
-        <img src={imageUrl} alt={name} className="product-image" />
-      ) : (
-        <p>Loading image...</p>
-      )}
-      <div className="product-details">
-        <h3>{name}</h3>
-        <p>Category: {category}</p>
-        <p>Product ID: {productId}</p>
-        <p className={`product-status ${status !== "Available" ? "low-stock" : ""}`}>
-          {status}
-        </p>
-        <p>Quantity: {qty} units</p>
-        <p className="product-price">₹{price}</p>
-        <button className="order-now">Order Now</button>
+    <Card className="product-card shadow-sm">
+      <div className="image-container">
+        {imageUrl ? (
+          <Card.Img variant="top" src={imageUrl} alt={name} className="product-image" />
+        ) : (
+          <div className="image-placeholder">Loading image...</div>
+        )}
       </div>
-    </div>
+      <Card.Body>
+        <Card.Title className="product-title">{name}</Card.Title>
+        <Card.Text className="product-category">Category: {category}</Card.Text>
+        <Card.Text className="product-id">Product ID: {productId}</Card.Text>
+        <Card.Text className={`product-status ${status !== "Available" ? "low-stock" : "in-stock"}`}>
+          {status}
+        </Card.Text>
+        <Card.Text className="product-qty">Quantity: {qty} units</Card.Text>
+        <Card.Text className="product-price">₹{price}</Card.Text>
+        <Button variant="primary" className="order-button">
+          <FaShoppingCart className="cart-icon" /> Order Now
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 

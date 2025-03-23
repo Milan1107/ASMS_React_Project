@@ -1,0 +1,68 @@
+.footer {
+    background: linear-gradient(to right, #007bff, #6610f2); /* Blue-Purple Gradient */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 10px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  .footer-section p,
+  .footer-section ul {
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 5px 0;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .social-icons {
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    color: white;
+    font-size: 18px;
+    margin: 0 10px;
+    transition: 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #ffc107;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  
