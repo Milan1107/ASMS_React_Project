@@ -14,11 +14,15 @@ import Cart from "./components/cart";
 import axios from 'axios';
 import Paypal from "./components/paypal";
 
+
+import { CartProvider } from "./components/CartContext";
+
 axios.defaults.baseURL = 'http://localhost:8080/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 
 const App = () => {
   return (
+    <CartProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -39,6 +43,7 @@ const App = () => {
         </Route>
       </Routes>
     </Router>
+    </CartProvider>
   );
 };
 

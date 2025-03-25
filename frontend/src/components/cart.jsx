@@ -2,53 +2,33 @@ import { useState } from "react";
 import Rating from "@mui/material/Rating";
 import { useNavigate } from "react-router-dom";
 import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
+import { useCart } from "./CartContext"; // Import useCart
 import "./Cart.css"; // Import the CSS file
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Ponds Moisturiser",
-      image: "/assets/Ponds.jpg",
-      price: 300,
-      quantity: 5,
-      rating: 4,
-    },
-    {
-      id: 2,
-      name: "Nivea Cream",
-      image: "/assets/Ponds.jpg",
-      price: 250,
-      quantity: 2,
-      rating: 4.5,
-    },
-  ]);
-
+  const { cart, cartDispatch } = useCart(); // Fetch cart data from context
   const [errorMessage, setErrorMessage] = useState(""); // State to store error message
   const navigate = useNavigate();
 
-  // Calculate subtotal
+  // Calculate subtotal dynamically
   const getSubtotal = () =>
-    cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   // Remove item from cart
   const removeItem = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+    cartDispatch({ type: "REMOVE_FROM_CART", payload: id });
   };
 
   // Update quantity
   const updateQuantity = (id, change) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + change) }
-          : item
-      )
-    );
+    const item = cart.find((i) => i.id === id);
+    if (item) {
+      cartDispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity: item.quantity + change } });
+    }
   };
 
   const handleCheckout = () => {
-    if (cartItems.length === 0) {
+    if (cart.length === 0) {
       setErrorMessage("Please add items to your cart before proceeding.");
       return;
     }
@@ -62,7 +42,7 @@ const Cart = () => {
         <h2 className="text-center mb-4">Your Cart</h2>
         <div className="row">
           <div className="col-md-8">
-            {cartItems.length === 0 ? (
+            {cart.length === 0 ? (
               <h4 className="text-center text-muted">Your cart is empty</h4>
             ) : (
               <div className="cart-container">
@@ -77,11 +57,16 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((item) => (
+                    {cart.map((item) => (
                       <tr key={item.id}>
                         <td>
                           <div className="d-flex align-items-center">
-                            <img src={item.image} alt={item.name} className="product-image" />
+                            <img 
+                              src={item.image} // Fix: Use correct key for image
+                              alt={item.name} 
+                              className="product-image" 
+                              onError={(e) => { e.target.src = "/placeholder.jpg"; }} // Fallback for broken images
+                            />
                             <div className="ms-3">
                               <strong>{item.name}</strong>
                               <br />
