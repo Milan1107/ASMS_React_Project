@@ -1,13 +1,123 @@
+/* General Section Styling */
+.section {
+  padding: 50px 0;
+  background-color: #f8f9fa;
+}
+
+/* Container and Box Shadow */
 .cart-container {
-    text-align: center;
-    padding: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #ffcc00; /* Yellow theme */
+  color: black;
+  padding: 12px;
+  text-align: left;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Product Image Styling */
+.product-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove Button - No Red, Only Trash Icon */
+.btn-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-remove:hover {
+  opacity: 0.7;
+}
+
+/* Quantity Update Buttons - No Sky Blue */
+.quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantity-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity-container button:hover {
+  opacity: 0.7;
+}
+
+/* Cart Summary */
+.cart-summary {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h4 {
+  margin-bottom: 15px;
+}
+
+.cart-summary .total-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Checkout Button */
+.btn-checkout {
+  background-color: #ffcc00; /* Keeping theme color */
+  color: black;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-checkout:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 8px;
   }
-  
-  .cart-container h1 {
-    color: #333;
+
+  .btn-checkout {
+    font-size: 14px;
   }
-  
-  .cart-container p {
-    color: #666;
-  }
-  
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

@@ -11,9 +11,6 @@ import Inventory from "./components/agencyComponents/Pages/Inventory/Inventory";
 import Customers from "./components/agencyComponents/Pages/Customer/Customer";
 import Orders from "./components/agencyComponents/Pages/Order/Order";
 import Cart from "./components/cart";
-
-
-
 import axios from 'axios';
 import Paypal from "./components/paypal";
 
@@ -31,6 +28,7 @@ const App = () => {
         <Route path="/dashboard" element={<PrivateRoute><RetailDashboard/></PrivateRoute>} />
         <Route path="/agency" element={<Agency />} />
         <Route path="/payment-gateway" element={<Paypal/>}/>
+        
         
         {/* Wrap agency pages inside SideBar */}
         <Route path="/agency/*" element={<SideBar />}>

@@ -1,4 +1,4 @@
-.product-card {
+/* .product-card {
   width: 100%;
   max-width: 350px;
   border-radius: 12px;
@@ -71,4 +71,83 @@
 
 .cart-icon {
   margin-right: 8px;
+} */
+
+
+
+
+
+
+/* General Card Styling */
+.product-card {
+  width: 280px;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.image-container {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text & Status */
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-category {
+  font-size: 13px;
+  color: #555;
+}
+
+.product-status {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Order Button */
+.order-button {
+  width: 100%;
+  background-color: #ffcc00;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.order-button:hover {
+  background-color: #d9d9d9;
+}
+
+.cart-icon {
+  margin-right: 5px;
+  font-size: 14px;
 }
