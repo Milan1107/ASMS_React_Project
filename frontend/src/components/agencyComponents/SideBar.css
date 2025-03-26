@@ -1,4 +1,4 @@
-.sidebar{
+/* .sidebar{
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -30,4 +30,43 @@
 }
 .PageContent{
     padding-left: 12px;
+} */
+
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: #f4f6f9;
+}
+
+.AppHeader, .AppFooter {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.SideMenuAndPageContent {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.SideMenu {
+    width: 250px;
+    background: white;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.PageContent {
+    flex: 1;
+    padding: 20px;
 }

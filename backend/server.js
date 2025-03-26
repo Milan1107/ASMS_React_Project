@@ -10,6 +10,7 @@ const AuthRouter = require("./Routes/AuthRouter"); // Auth Routes
 const InventoryRouter = require("./Routes/inventoryRoutes"); // Inventory Routes
 const CustomerRouter = require("./Routes/customerRoutes"); // Customer Routes
 const UploadRouter = require("./Routes/uploadRouters"); // Upload Routes
+const OrderRouter = require("./Routes/OrderRouter");//Order Routes
 
 const PORT = process.env.PORT || 8080;
 
@@ -24,6 +25,7 @@ app.use("/auth", AuthRouter);
 app.use("/inventory", InventoryRouter);
 app.use("/customers", CustomerRouter);
 app.use("/upload", UploadRouter); // Add upload route
+app.use("/orders", OrderRouter);
 
 // Start the server
 app.listen(PORT, () => {

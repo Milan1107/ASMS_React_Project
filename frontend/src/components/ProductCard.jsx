@@ -50,16 +50,20 @@ const ProductCard = ({ productId, name, category, qty, status, price, weight, ra
         )}
       </div>
       <Card.Body className="text-center">
-        <Card.Title className="product-title">{name}</Card.Title>
-        <Card.Text className="product-category">{category}</Card.Text>
-        <Card.Text className="product-status">{status}</Card.Text>
-        <Card.Text className="product-price">₹{price}</Card.Text>
-        <NavLink to="/cart">
-          <Button variant="light" className="order-button" onClick={addToCart}>
-            <FaShoppingCart className="cart-icon" /> Add to Cart
-          </Button>
-        </NavLink>
-      </Card.Body>
+  <Card.Title className="product-title">{name}</Card.Title>
+  <Card.Text className="product-category">{category}</Card.Text>
+  <Card.Text className="product-category">{weight}</Card.Text>
+  <Card.Text className="product-status">
+    {status === "Low Stock" ? `${status} - Last ${qty} remaining` : status}
+  </Card.Text>
+  <Card.Text className="product-price">₹{price}</Card.Text>
+  <NavLink to="/cart">
+    <Button variant="light" className="order-button" onClick={addToCart}>
+      <FaShoppingCart className="cart-icon" /> Add to Cart
+    </Button>
+  </NavLink>
+</Card.Body>
+
     </Card>
   );
 };
