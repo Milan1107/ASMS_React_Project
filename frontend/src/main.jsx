@@ -9,8 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 console.log("main.jsx is running...");
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <ToastContainer />
+  // <StrictMode>
+  <>
+      <ToastContainer/>
       <App />
-  </StrictMode>
+  </>
+  // </StrictMode>
 )

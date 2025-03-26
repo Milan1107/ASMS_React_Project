@@ -3,10 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
 import "./ProductCard.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useCart } from "./CartContext"; // Import useCart
 
 const ProductCard = ({ productId, name, category, qty, status, price, weight, rating }) => {
+  
   const [imageUrl, setImageUrl] = useState("");
   const { cartDispatch } = useCart(); // Get cartDispatch from context
 
@@ -57,11 +58,11 @@ const ProductCard = ({ productId, name, category, qty, status, price, weight, ra
     {status === "Low Stock" ? `${status} - Last ${qty} remaining` : status}
   </Card.Text>
   <Card.Text className="product-price">₹{price}</Card.Text>
-  <NavLink to="/cart">
+  <Link to="/cart" state={productId}>
     <Button variant="light" className="order-button" onClick={addToCart}>
       <FaShoppingCart className="cart-icon" /> Add to Cart
     </Button>
-  </NavLink>
+  </Link>
 </Card.Body>
 
     </Card>

@@ -41,6 +41,7 @@ return (
         {products.map((product) => (
           <ProductCard
             key={product.productId}
+            productId={product.productId}
             image={product.image || "/assets/default-image.jpg"} 
             name={product.name}
             category={product.category}

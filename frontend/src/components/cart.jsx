@@ -130,7 +130,7 @@
 
 import { useState } from "react";
 import Rating from "@mui/material/Rating";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
 import { useCart } from "./CartContext";
 import axios from "axios";
@@ -140,6 +140,7 @@ const Cart = () => {
   const { cart, cartDispatch } = useCart();
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const { state : productId} = useLocation();
 
   // Calculate subtotal
   const getSubtotal = () =>
@@ -166,7 +167,7 @@ const Cart = () => {
   
     const orderData = {
       items: cart.map((item) => ({
-        _id: item._id, // Use _id here
+        productId: productId, // Use _id here
         name: item.name,
         price: item.price,
         quantity: item.quantity,
